@@ -37,11 +37,11 @@ int check_for_builtins(char **args, char *line, char **env)
 	};
 	int i;
 
-	for (i = 0; list[i].arg != NULL; i++)
+	for (i = 0; list[i]./*argument for struct */ != NULL; i++)
 	{
-		if (_strcmp(list[i].arg, args[0]) == 0)
+		if (_strcmp(list[i]./* argument for struct */, args[0]) == 0)
 		{
-			list[i].builtin(args, line, env);
+			list[i]./* struct */(args, line, env);
 			return (1);
 		}
 	}
