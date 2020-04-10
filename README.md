@@ -12,7 +12,7 @@ Read or Watch:
 In this project we are tasked with creating our own simple UNIX command interpreter that executes commands from the standard input or from a file.
 
 ---
-## Instructions
+## Instructions:bulb:
 
 - Compiling the program: ```sh gcc -Wall -Werror -Wextra -pedantic *.c -o hsh ```
 - Interactive mode:
