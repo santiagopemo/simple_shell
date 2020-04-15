@@ -17,7 +17,7 @@ int _atoi(char *s)
 	{
 		return (-1);
 	}
-	return (num % 256);
+	return (num);
 }
 /**
  * _uitoa - converts a unsigned to an string

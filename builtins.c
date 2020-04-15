@@ -41,6 +41,7 @@ void my_exit(vars_t *vars)
 		status = _atoi(vars->commands[1]);
 		if (status < 0)
 		{
+			vars->status = 2;
 			print_command_error(vars, ": Illegal number: ");
 			_dprintf(STDERR_FILENO, "%s\n", vars->commands[1]);
 			return;
