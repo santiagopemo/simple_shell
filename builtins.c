@@ -34,20 +34,21 @@ void my_exit(vars_t *vars)
 {
 	int status;
 
-	vars->status = 0;
-
-	if (vars->commands[1] != NULL)
+	if (_strcmpr(vars->commands[0], "exit") == 0)
 	{
-		status = _atoi(vars->commands[1]);
-		if (status == -1)
+		if (vars->commands[1] != NULL)
 		{
-			vars->status = 2;
-			print_command_error(vars, ": Illegal number: ");
-			_dprintf(STDERR_FILENO, "%s\n", vars->commands[1]);
-			return;
+			status = _atoi(vars->commands[1]);
+			if (status == -1)
+			{
+				vars->status = 2;
+				print_command_error(vars, ": Illegal number: ");
+				_dprintf(STDERR_FILENO, "%s\n", vars->commands[1]);
+				return;
+			}
+			else
+				vars->status = status;
 		}
-		else
-			vars->status = status;
 	}
 	free(vars->l_buffer);
 	free_argv(vars->commands_tok);
@@ -65,6 +66,7 @@ void my_exit(vars_t *vars)
 void printenv(vars_t *vars)
 {
 	print_list(vars->env_head);
+	vars->status = 0;
 }
 /**
  * _setenv - function that sets a enviromental variables
@@ -92,8 +94,10 @@ void _setenv(vars_t *vars)
 		if (add_node_end(&(vars->env_head),
 					vars->commands[1], vars->commands[2]) != NULL)
 		{
+			vars->status = 0;
 			return;
 		}
+		vars->status = 127;
 		perror("Fatal error creating the list");
 		return;
 	}
@@ -116,9 +120,14 @@ void _unsetenv(vars_t *vars)
 
 		if (index != -1)
 		{
-
 			if (delete_nodeint_at_index(&(vars->env_head), (unsigned int)index))
+			{
+				vars->status = 0;
 				return;
+			}
+			print_command_error(vars, NULL);
+			vars->status = 127;
+			return;
 		}
 		print_command_error(vars, ": No variable to unset\n");
 		vars->status = 2;
