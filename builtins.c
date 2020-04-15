@@ -39,7 +39,7 @@ void my_exit(vars_t *vars)
 	if (vars->commands[1] != NULL)
 	{
 		status = _atoi(vars->commands[1]);
-		if (status < 0)
+		if (status == -1)
 		{
 			vars->status = 2;
 			print_command_error(vars, ": Illegal number: ");
