@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * _atoi - converts a string in a integer
+ * @s: string
+ *
+ * Return: the number
+ */
 int _atoi(char *s)
 {
 	register int i = 0;
