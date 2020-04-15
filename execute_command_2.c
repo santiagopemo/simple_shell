@@ -48,10 +48,10 @@ int execute_command(char *command, vars_t *vars)
 	else
 	{
 		wait(&(vars->status));
-		/* if (WIFEXITED(vars->status))*/
-		/* vars->status = WEXITSTATUS(vars->status);*/
-		/* else if (WIFSIGNALED(vars->status) && WTERMSIG(vars->status) == SIGINT)*/
-		/* vars->status = 130;*/
+		if (WIFEXITED(vars->status))
+			vars->status = WEXITSTATUS(vars->status);
+		else if (WIFSIGNALED(vars->status) && WTERMSIG(vars->status) == SIGINT)
+			vars->status = 130;
 
 		return (1);
 	}

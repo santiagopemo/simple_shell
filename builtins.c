@@ -122,6 +122,7 @@ void _unsetenv(vars_t *vars)
 		}
 		print_command_error(vars, ": No variable to unset\n");
 		vars->status = 2;
+		return;
 	}
 	print_command_error(vars, ": Incorrect number of arguments\n");
 	vars->status = 2;
