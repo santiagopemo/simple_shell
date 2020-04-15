@@ -97,8 +97,8 @@ void _setenv(vars_t *vars)
 		perror("Fatal error creating the list");
 		return;
 	}
-	perror("Insuficient arguments");
-
+	print_command_error(vars, ": Incorrect number of arguments\n");
+	vars->status = 2;
 }
 /**
  * _unsetenv - function that unsets a enviromental variables
@@ -120,6 +120,9 @@ void _unsetenv(vars_t *vars)
 			if (delete_nodeint_at_index(&(vars->env_head), (unsigned int)index))
 				return;
 		}
+		print_command_error(vars, ": No variable to unset\n");
+		vars->status = 2;
 	}
-	perror("Insuficient arguments");
+	print_command_error(vars, ": Incorrect number of arguments\n");
+	vars->status = 2;
 }
