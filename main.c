@@ -69,7 +69,7 @@ int main(int argc, char *argv[], char *env[])
 	if (isatty(STDIN_FILENO))
 		_dprintf(STDOUT_FILENO, "\n");
 	free_list(vars.env_head), free(vars.l_buffer), free_argv(vars.env);
-	return (0);
+	return (vars.status);
 }
 /**
  * myhandle - fucntion that handles the signal Ctr+Ctr

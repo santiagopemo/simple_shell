@@ -37,13 +37,13 @@ int execute_command(char *command, vars_t *vars)
 	if (pid == -1)
 	{
 		print_command_error(vars, NULL);
-		return (0);
+		/*return (0);*/
 	}
 	if (pid == 0)
 	{
 		if (execve(command, vars->commands, vars->env) == -1)
 			print_command_error(vars, NULL);
-		return (0);
+		/*return (0);*/
 	}
 	else
 	{
@@ -52,9 +52,10 @@ int execute_command(char *command, vars_t *vars)
 			vars->status = WEXITSTATUS(vars->status);
 		else if (WIFSIGNALED(vars->status) && WTERMSIG(vars->status) == SIGINT)
 			vars->status = 130;
-
 		return (1);
 	}
+	vars->status = 127;
+	return (0);
 }
 /**
  * print_command_error - function that prints the error of th shell

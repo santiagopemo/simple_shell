@@ -15,7 +15,7 @@ int is_comand(char *cmd, vars_t *vars)
 	{
 		if (check_command(cmd, vars))
 			return (1);
-		return (0);
+		my_exit(vars);
 	}
 	cmd = whit_path(vars);
 	if (cmd != NULL)
@@ -29,9 +29,8 @@ int is_comand(char *cmd, vars_t *vars)
 					free(cmd);
 					return (1);
 				}
-				perror("Fatal error cant execute command");
 				free(cmd);
-				return (0);
+				my_exit(vars);
 			}
 			print_command_error(vars, ": Permission denied\n");
 			vars->status = 126;
@@ -63,16 +62,15 @@ int check_command(char *cmd, vars_t *vars)
 			{
 				return (1);
 			}
-			perror("Fatal error cant execute command");
 			return (0);
 		}
 		print_command_error(vars, ": Permission denied\n");
 		vars->status = 126;
-		return (0);
+		return (1);
 	}
 	print_command_error(vars, ": not found\n");
 	vars->status = 127;
-	return (0);
+	return (1);
 }
 /**
  * is_path - function that checks if a commands is with the path
@@ -141,8 +139,8 @@ char *whit_path(vars_t *vars)
 	if (tokens == NULL)
 	{
 		free(path);
-		perror("Fatal error");
-		return (NULL);
+		vars->status = 127;
+		my_exit(vars);
 	}
 	for (i = 0, k = 0; tokens[k]; i++)
 	{
