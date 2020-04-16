@@ -10,8 +10,7 @@
 int is_comand(char *cmd, vars_t *vars)
 {
 	struct stat st;
-	int path_executed;
-
+	
 	if (is_path(vars) == 1)
 	{
 		if (check_command(cmd, vars))
@@ -29,10 +28,9 @@ int is_comand(char *cmd, vars_t *vars)
 				{
 					free(cmd);
 					return (1);
-				}
-				path_executed = 1;
-				/*free(cmd);*/
-				/*my_exit(vars);*/
+				}				
+				free(cmd);
+				my_exit(vars);
 			}
 			else
 			{
@@ -46,8 +44,6 @@ int is_comand(char *cmd, vars_t *vars)
 	print_command_error(vars, ": not found\n");
 	vars->status = 127;
 	free(cmd);
-	if (path_executed)
-		my_exit(vars);
 	return (0);
 }
 /**
