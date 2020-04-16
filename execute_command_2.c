@@ -54,7 +54,7 @@ int execute_command(char *command, vars_t *vars)
 			vars->status = 130;
 		return (1);
 	}
-	print_command_error(vars, ": not found\n");
+	/*print_command_error(vars, ": not found\n");*/
 	vars->status = 127;
 	return (0);
 }
