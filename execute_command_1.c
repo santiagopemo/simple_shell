@@ -10,7 +10,7 @@
 int is_comand(char *cmd, vars_t *vars)
 {
 	struct stat st;
-	
+
 	if (is_path(vars) == 1)
 	{
 		if (check_command(cmd, vars))
@@ -28,7 +28,7 @@ int is_comand(char *cmd, vars_t *vars)
 				{
 					free(cmd);
 					return (1);
-				}				
+				}
 				free(cmd);
 				my_exit(vars);
 			}
