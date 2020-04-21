@@ -132,7 +132,7 @@ char *whit_path(vars_t *vars)
 	struct stat st;
 
 	path = _getenvlist("PATH", vars->env_head);
-	if (path == NULL)
+	if (path == NULL || _strcmpr(path, "") == 0)
 		return (NULL);
 	path = _strdup(path);
 	if (path == NULL)

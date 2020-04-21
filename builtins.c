@@ -86,7 +86,7 @@ void _setenv(vars_t *vars)
 			if (_strcmpr(temp->name, vars->commands[1]) == 0)
 			{
 				free(temp->value);
-				temp->value = strdup(vars->commands[2]);
+				temp->value = _strdup(vars->commands[2]);
 				return;
 			}
 			temp = temp->next;
