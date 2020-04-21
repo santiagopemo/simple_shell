@@ -15,7 +15,8 @@ void _cd(vars_t *vars)
 		path = _getenvlist("HOME", vars->env_head);
 		if (path == NULL)
 			path = _strdup(cwd);
-		path = _strdup(path);
+		else
+			path = _strdup(path);
 	}
 	else if (vars->commands[1][0] == 45 && vars->commands[1][1] != '\0')
 	{
