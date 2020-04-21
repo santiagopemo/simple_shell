@@ -53,6 +53,6 @@ $
 
 ---
 ## Authors
-- Santigo Peña
-- Ricky Mosquera
+* [Santigo Peña](https://github.com/santiagopemo/simple_shell)
+* [Ricky Mosquera]
 
