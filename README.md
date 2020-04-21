@@ -54,5 +54,5 @@ $
 ---
 ## Authors
 * [Santigo Peña](https://github.com/santiagopemo/simple_shell)
-* [Ricky Mosquera]
+* [Ricky Mosquera](https://github.com/FabianMosquera)
 
