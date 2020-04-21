@@ -128,5 +128,8 @@ int get_env_index(env_t *head, char *name);
 char *_strtok(char *str, char *delim);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void print_command_error(vars_t *vars, char *message);
+void _cd(vars_t *vars);
+void cd_setenv(char *name, char *value, vars_t *vars);
+char *cd_check(char *cwd, vars_t *vars);
 
 #endif

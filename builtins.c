@@ -14,6 +14,7 @@ void (*get_builtin(vars_t *vars))(vars_t *vars)
 		{"env", printenv},
 		{"setenv", _setenv},
 		{"unsetenv", _unsetenv},
+		{"cd", _cd},
 		{NULL, NULL}
 	};
 
